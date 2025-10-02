@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligência Artificial: Potencializando o Aprendizado</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Inteligência Artificial: Potencializando o Aprendizado</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <p class="subtitle">Imersão em IA</p>
+                <h2>Desvende o Poder da IA para Transformar sua Jornada de Conhecimento</h2>
+                <p class="description">
+                    Em um mundo em constante evolução, a Inteligência Artificial não é apenas uma ferramenta, mas um catalisador para o aprendizado e a inovação. Prepare-se para ir além do convencional e descobrir como a IA pode potencializar suas habilidades, otimizar processos e abrir portas para um futuro de possibilidades ilimitadas.
+                </p>
+                <div class="event-details">
+                    <p><strong>Data:</strong> 07 de Outubro de 2025</p>
+                    <p><strong>Hora:</strong> 19:30 (Horário de Brasília)</p>
+                    <p><strong>Plataforma:</strong> Google Meet</p>
+                    <div id="countdown" class="countdown"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="instructors">
+            <div class="container">
+                <h3>Conheça Seus Guias</h3>
+                <div class="instructor-cards">
+                    <div class="instructor-card">
+                        <img src="./rafael_mendonca.png" alt="Rafael Mendonça">
+                        <h4>Rafael Mendonça</h4>
+                        <p>Especialista em Machine Learning e Visão Computacional, com vasta experiência em projetos de IA aplicada.</p>
+                    </div>
+                    <div class="instructor-card">
+                        <img src="./ruany_borges_placeholder.png" alt="Ruany Borges">
+                        <h4>Ruany Borges</h4>
+                        <p>Cientista de Dados e Engenheira de IA, focada em soluções inovadoras para otimização de aprendizado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h3>Não Perca Essa Oportunidade!</h3>
+                <a href="https://forms.gle/L9H7WaX3T1n6osDEA" target="_blank" class="btn primary-btn">Inscreva-se Agora!</a>
+                <p>Garanta sua vaga e comece a transformar seu futuro com a Inteligência Artificial.</p>
+                <a href="https://chat.whatsapp.com/EkFixxKFNgDFhCzkInbYLA" target="_blank" class="btn secondary-btn">Entrar no Grupo do WhatsApp</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Inteligência Artificial: Potencializando o Aprendizado. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animação de entrada suave para elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação aos elementos
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.instructor-card, .cta, .event-details');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Efeito de digitação no título principal
+            const mainTitle = document.querySelector('.hero h2');
+            const originalText = mainTitle.textContent;
+            mainTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    mainTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+
+            // Contador regressivo para o evento
+            const eventDate = new Date('2025-10-07T19:30:00-03:00');
+            
+            const updateCountdown = () => {
+                const now = new Date();
+                const timeLeft = eventDate - now;
+                
+                if (timeLeft > 0) {
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    const countdownElement = document.getElementById('countdown');
+                    if (countdownElement) {
+                        countdownElement.innerHTML = `
+                            <div class="countdown-item">
+                                <span class="countdown-number">${days}</span>
+                                <span class="countdown-label">Dias</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number">${hours}</span>
+                                <span class="countdown-label">Horas</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number">${minutes}</span>
+                                <span class="countdown-label">Minutos</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-number">${seconds}</span>
+                                <span class="countdown-label">Segundos</span>
+                            </div>
+                        `;
+                    }
+                } else {
+                    const countdownElement = document.getElementById('countdown');
+                    if (countdownElement) {
+                        countdownElement.innerHTML = '<p>O evento já começou!</p>';
+                    }
+                }
+            };
+            
+            // Atualizar contador a cada segundo
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        });
+
+        // Efeito de partículas no fundo
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 5000);
+        }
+        
+        // Criar partículas periodicamente
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
+
